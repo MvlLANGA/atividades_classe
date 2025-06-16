@@ -48,3 +48,24 @@ frutas_kg = df_produtos[(df_produtos['Categoria'] == 'Fruta') & (df_produtos['Es
 print("-"*80)
 print("\n Os produtos que tem mais de 150Kg em estoque são: ")
 print(frutas_kg['Produto'].head(10))
+
+#Listando todos os produtos em ordenm alfabetica
+lista_produtos = df_produtos['Produto'].sort_values().tolist()
+print("-"*80)
+print("\nEssa é nossa lista em ordem Alfabetica: ")
+print(f"\n- {lista_produtos}")
+
+#Selecionando os 5 produtos mais caros
+produtos_preco = df_produtos.sort_values(by= 'Preco_Kg', ascending=False).head(5)
+print("-"*80)
+print("\nOs 5 podutos mais caros do nosso df são: ")
+print(produtos_preco[['Produto','Preco_Kg']])
+
+#Listando produtos pela Data_Ultima_Reposicao( do mais recente ao mais antingo)
+produtos_ordenados = df_produtos.sort_values(
+    by=['Data_Ultima_Reposicao', 'Produto'], ascending=[False, True]    
+)
+print("-"*80)
+print("\nProdutos ordenados, pela data da ultima reposição: ")
+print(produtos_ordenados[['Produto', 'Data_Ultima_Reposicao']].head(10))
+
